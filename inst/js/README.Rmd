@@ -1,0 +1,19 @@
+---
+title: "notes"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Notes
+
+```{bash}
+yarn global add browserify
+cd inst/js
+yarn add which-polygon
+echo "global.whichPolygon = require('which-polygon');" > in.js
+browserify in.js -o which-polygon-browserify.min.js
+rm in.js
+```

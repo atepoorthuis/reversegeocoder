@@ -1,0 +1,23 @@
+---
+title: "README"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(sf)
+library(geojsonio)
+library(tidyverse)
+countries <- read_sf(system.file("extdata", "ne_10m_admin_0_countries/ne_10m_admin_0_countries.shp", package = "reversegeocoder")) %>% 
+  select(ADM0_A3)
+countries_json <- geojson_list(countries) %>% unclass()
+ctx <- rg_load_polygons(countries_json)
+point <- c(30.5, 50.5)
+points <- rep(list(point), 1000)
+profvis(replicate(1000, rg_query(ctx, point, "ADM0_A3")))
+profvis(rg_batch_query(ctx, points, "ADM0_A3"))
+```
