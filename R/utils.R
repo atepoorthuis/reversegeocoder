@@ -15,7 +15,8 @@ rg_load_polygons <- function(data) {
 
 rg_query <- function(ctx, point, field) {
   # query([30.5, 50.5])['field']
-  q <- sprintf("query([%s, %s])[%s]", point[1], point[2], paste0("'", field, "'"))
+  #q <- sprintf("var result = query([%s, %s]); result = (result == null) ? null : result[%s]", point[1], point[2], paste0("'", field, "'"))
+  q <- sprintf("var result = query([%s, %s]); (result == null) ? '' : result[%s]", point[1], point[2], paste0("'", field, "'"))
   ctx$eval(q)
 }
 

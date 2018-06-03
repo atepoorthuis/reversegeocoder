@@ -6,7 +6,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
+  
 
 ```{r}
 library(sf)
@@ -18,6 +18,6 @@ countries_json <- geojson_list(countries) %>% unclass()
 ctx <- rg_load_polygons(countries_json)
 point <- c(30.5, 50.5)
 points <- rep(list(point), 1000)
-profvis(replicate(1000, rg_query(ctx, point, "ADM0_A3")))
+profvis(replicate(10000, rg_query(ctx, point, "ADM0_A3")))
 profvis(rg_batch_query(ctx, points, "ADM0_A3"))
 ```
