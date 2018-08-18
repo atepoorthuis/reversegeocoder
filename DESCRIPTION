@@ -1,12 +1,15 @@
 Package: reversegeocoder
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Reverse Geocoding Points to Polygons
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: person("Ate", "Poorthuis", role=c("aut", "cre"),
+               email = "ate_poorthuis@sutd.edu.sg")
+Description: Reverse Geocoding of Points to Polygons
+    Uses Mapbox's which-polygon js library to determine in which polygon a point is located
+    The spatial index on the polygons used by which-polygon in many cases allows for faster spatial joins then the default join operations in sf
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: V8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
