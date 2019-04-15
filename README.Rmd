@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 
 # reversegeocoder
 
-`reversegeocoder` allows for a fast(er) solution to a common problem: you have a large set of spatial points and would like to find out in which polygon (e.g. country) each point is located. Although several R libraries implement spatial joins, these generally do not use a spatial index on the polygons and can thus be relatively show in this particular use case. `reversegeocoder` uses the fast R-tree index as implemented in Vladimir Agafonkin's [rbush](https://github.com/mourner/rbush) package. This provides a significant performance improvement, especially for real-time or streaming scenarios where the set of polygons does not change but new points are coming in continuously. With reversegeocoder the spatial index will be re-used for every new lookup.
+`reversegeocoder` allows for a fast(er) solution to a common problem: you have a large set of spatial points and would like to find out in which polygon (e.g. country) each point is located. Although several R libraries implement spatial joins, these generally do not use a spatial index on the polygons and can thus be relatively show in this particular use case. `reversegeocoder` uses the fast R-tree index as implemented in Vladimir Agafonkin's [rbush](https://github.com/mourner/rbush) package, exposed conveniently in Mapbox's [which-polygon](https://github.com/mapbox/which-polygon) package. This provides a significant performance improvement, especially for real-time or streaming scenarios where the set of polygons does not change but new points are coming in continuously. With reversegeocoder the spatial index will be re-used for every new lookup.
 
 ## Installation
 
